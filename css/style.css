@@ -223,7 +223,7 @@ h6 {
 .card__md__content ul {
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
   padding: 1rem 0;
 }
 
@@ -322,6 +322,7 @@ h6 {
   font-size: 1.4rem;
   opacity: 0.8;
   font-weight: bold;
+  color: #fff;
 }
 
 .footer {
@@ -550,6 +551,29 @@ h6 {
 /* ------------------ADDED on WORDPRESS------------------- */
 
 .card__sm img {
-	width: 225px !important;
-	height: max-content;
+  width: 150px !important;
+  height: max-content;
+}
+
+.card__md__content a {
+  color: #fff;
+}
+
+.thePost {
+  padding: 10rem 0;
+}
+
+.thePost img {
+  width: 100%;
+  margin-top: 5rem;
+  object-fit: cover;
+  height: 30rem;
+}
+
+.thePost h1 {
+  font-size: 4rem;
+}
+
+.card__lg__content a {
+  color: #fff;
 }

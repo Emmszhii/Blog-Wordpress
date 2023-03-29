@@ -20,7 +20,7 @@
                 Ontario M5B 1S5 Canada.</span
               >
             </li>
-
+            
             <li>
               <i class="fas fa-envelope"></i>
               <span>info@theblog.com</span>
