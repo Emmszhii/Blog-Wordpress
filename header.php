@@ -65,7 +65,6 @@
                 <?php wp_menu_li(); ?>
               </ul>
             </nav>
-            alt="blog-img"
           </div>
           <button id="themeToggle"><i class="fas fa-sun"></i></button>
         </div>

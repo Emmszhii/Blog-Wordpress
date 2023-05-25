@@ -1,14 +1,10 @@
 <?php
-
-/* 
-    Template Name: Contact
-*/
-
+// Template Name: Contact
 ?>
 
 <?php get_header() ?>
 
-    <section class="page page__contact">
+<section class="page page__contact">
       <div class="page__contact__wrapper">
         <div class="page__contact__info">
           <h2 class="block__header">LET’S TALK ABOUT <br />SOMETHING NICE</h2>
@@ -20,7 +16,7 @@
                 Ontario M5B 1S5 Canada.</span
               >
             </li>
-            
+
             <li>
               <i class="fas fa-envelope"></i>
               <span>info@theblog.com</span>

@@ -556,7 +556,7 @@ h6 {
 }
 
 .card__md__content a {
-  color: #fff;
+  /* color: #fff; */
 }
 
 .thePost {
@@ -576,4 +576,10 @@ h6 {
 
 .card__lg__content a {
   color: #fff;
+}
+
+/* ------------------ WORDPRESS STYLE ----------------------  */
+
+.latest .card__md__content a {
+  color: var(--light);
 }

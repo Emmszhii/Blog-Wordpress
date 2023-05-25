@@ -1,6 +1,6 @@
 <?php 
-/*
-    Template Name: Home
+/* 
+  Template Name: Home
 */
 ?>
 
@@ -9,7 +9,7 @@
     <section class="banner">
       <div class="container">
         <div class="banner__wrapper">
-          <h1><?php echo get_field('banner_title') ?></h1>
+          <h1><?php echo get_field('the_title'); ?> </h1>
           <div class="banner__grid">
             <div class="banner__main">
               <article class="banner__story">
@@ -21,24 +21,17 @@
                         'tax_query' => array(
                           array(
                             'taxonomy' => 'category',
-                            'field'    => 'slug',
-                            'terms'    => 'Uncategorized',
-                          ),
-                        ),
+                            'field' => 'slug',
+                            'terms' => 'Uncategorized'
+                          )
+                        )
                     );
                     $newQuery = new WP_Query($args);
                 ?>
-
+    
                 <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
 
-                <!-- <picture>
-                  <source
-                    src="<?php echo get_template_directory_uri(); ?> ./img/img-1-sm.webp"
-                    media="(max-width:719px)"
-                  />
-                  <source src="<?php echo get_template_directory_uri(); ?> ./img/img-1.webp" media="(min-width:720px)" />
-                  <img src="<?php echo get_template_directory_uri(); ?> ./img/img-1.webp" alt="blog-img" />
-                </picture> -->
+                
                 <?php echo get_the_post_thumbnail(); ?>
                 <div class="banner__story__content">
                   <small><?php echo get_the_date('M d Y'); ?></small>
@@ -54,7 +47,7 @@
                     else:
                         echo 'no available content';
                     endif;
-                    wp_reset_postdata();
+                        wp_reset_postdata();
                 ?>
 
               </article>
@@ -69,12 +62,13 @@
                         'tax_query' => array(
                           array(
                             'taxonomy' => 'category',
-                            'field'    => 'slug',
-                            'terms'    => 'Uncategorized',
-                          ),
-                        ),
+                            'field' => 'slug',
+                            'terms' => 'Uncategorized'
+                          )
+                        )
                     );
                     $newQuery = new WP_Query($args);
+        
                 ?>
 
                 <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
@@ -93,7 +87,7 @@
                     else:
                         echo 'no available content';
                     endif;
-                    wp_reset_postdata();
+                        wp_reset_postdata();
                 ?>
             </div>
           </div>
@@ -105,80 +99,39 @@
       <div class="container">
         <h2>Latest Story</h2>
         <div class="latest__wrapper">
-          <!-- <div class="card__md">
-            <img src="<?php echo get_template_directory_uri(); ?> ./img/img-6.webp" alt="blog-img" class="lazy" />
-            <div class="card__md__content">
-              <ul>
-                <li><small>May 21, 2010</small></li>
-                <li><small>Fashion</small></li>
-              </ul>
-              <h3>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Corporis, praesentium.
-              </h3>
 
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Corporis voluptates debitis qui praesentium hic deleniti eos
-                sequi adipisci accusamus dolorem.
-              </p>
-              <a href="#">Read More...</a>
-            </div>
-          </div>
-
-          <div class="card__md">
-            <img src="<?php echo get_template_directory_uri(); ?> ./img/img-7.webp" alt="blog-img" class="lazy" />
-            <div class="card__md__content">
-              <ul>
-                <li><small>May 21, 2010</small></li>
-                <li><small>Fashion</small></li>
-              </ul>
-              <h3>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Corporis, praesentium.
-              </h3>
-
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Corporis voluptates debitis qui praesentium hic deleniti eos
-                sequi adipisci accusamus dolorem.
-              </p>
-              <a href="#">Read More...</a>
-            </div>
-          </div> -->
-
-            <?php
-                    $args = array(
-                        'post_type' => 'blogPost',
+        <?php
+          $args = array(
+            'post_type' => 'blogPost',
                         'posts_per_page' => 3,
                         'tax_query' => array(
                           array(
-                            'taxonomy' => 'category',
-                            'field'    => 'slug',
-                            'terms'    => 'latest-post',
-                          ),
-                        ),
-                    );
-                    $newQuery = new WP_Query($args);
-                ?>
-
-            <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
+                            'taxonomy' => 'post_tag',
+                            'field' => 'slug',
+                            'terms' => 'City'
+                          )
+                        )
+                          );
+        
+            $newQuery = new WP_Query($args);
+        ?>
+        <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
 
           <div class="card__md">
-            <?php echo get_the_post_thumbnail(); ?>
+            <?php echo get_the_post_thumbnail(); ?> 
             <div class="card__md__content">
               <ul>
                 <li><small><?php echo get_the_date('M d Y'); ?></small></li>
-                <li><small><?php echo get_field('the_category'); ?> </small></li>
+                <li><small><?php the_tags('') ?></small></li>
               </ul>
               <h3>
-                <?php the_content(); ?>
+                <?php the_title(); ?>
               </h3>
 
               <p>
-                <?php the_excerpt(); ?>
+              <?php the_content(); ?>
               </p>
-              <a href="<?php echo get_permalink(); ?>">Read More...</a>
+              <a href="<?php the_permalink(); ?>">Read More...</a>
             </div>
           </div>
 
@@ -187,8 +140,9 @@
                     else:
                         echo 'no available content';
                     endif;
-                    wp_reset_postdata();
+                        wp_reset_postdata();
                 ?>
+
 
         </div>
       </div>
@@ -196,100 +150,80 @@
 
     <section class="feature">
       <div class="feature__content">
-        <h2><?php echo get_field('feature_title'); ?></h2>
+        <h2><?php echo get_field('features_title');?></h2>
         <h3 class="block__header">
-        <?php echo get_field('feature_h2'); ?>
+        <?php echo get_field('features_content');?>
         </h3>
         <p>
-        <?php echo get_field('feature_parag'); ?>
+        <?php echo get_field('features_excerpt');?>
         </p>
       </div>
 
       <div class="container">
         <div class="feature__img">
-          <!-- <picture>
-            <source src="<?php echo get_template_directory_uri(); ?> ./img/img-9-sm.webp" media="(max-width:719px)" />
-            <source src="<?php echo get_template_directory_uri(); ?> ./img/img-9.webp" media="(min-width:720px)" />
-            <img src="<?php echo get_template_directory_uri(); ?> ./img/img-9.webp" alt="blog-img" class="lazy" />
-          </picture> -->
-          <?php 
-            $image = get_field('feature_img');
-            $size = 'full';
-            if(!empty($image)):
-          ?>
-          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
-          <?php endif; ?>
+          <picture>
+            <source srcset="<?php echo get_template_directory_uri() ?>./img/img-9-sm.jpeg" media="(max-width:719px)" />
+            <source srcset="<?php echo get_template_directory_uri() ?>./img/img-9.jpeg" media="(min-width:720px)" />
+            <img src="<?php echo get_template_directory_uri() ?>./img/img-9.jpeg" alt="blog-img" class="lazy" />
+          </picture>
         </div>
       </div>
 
       <div class="container">
         <div class="feature__wrapper">
           <div class="feature__main">
-            <?php
-                    $args = array(
-                        'post_type' => 'blogPost',
+
+          <?php
+          $args = array(
+            'post_type' => 'blogPost',
                         'posts_per_page' => 3,
                         'tax_query' => array(
                           array(
                             'taxonomy' => 'category',
-                            'field'    => 'slug',
-                            'terms'    => 'featured-post',
-                          ),
-                        ),
-                    );
-                    $newQuery = new WP_Query($args);
-                ?>
+                            'field' => 'slug',
+                            'terms' => 'new-features'
+                          )
+                        )
+            );
+        
+            $newQuery = new WP_Query($args);
+        ?>
+        <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
 
-            <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
-
-            <article class="card__lg">
-            <?php echo get_the_post_thumbnail(); ?>
+        <article class="card__lg">
+              <?php echo get_the_post_thumbnail(); ?>
               <div class="card__lg__content">
-                <small><?php echo get_the_date('M y D'); ?></small>
+                <small><?php echo get_the_date('M d Y'); ?></small>
                 <h3>
-                  <?php echo the_title(); ?>
+                  <?php the_title(); ?>
                 </h3>
                 <p>
-                  <?php echo the_excerpt(); ?>
+                  <?php the_content(); ?>
                 </p>
                 <a href="<?php echo get_permalink(); ?>">Read More...</a>
               </div>
-            </article>
+        </article>
 
             <?php
                     endwhile;
                     else:
                         echo 'no available content';
                     endif;
-                    wp_reset_postdata();
+                        wp_reset_postdata();
                 ?>
+
+
           </div>
           <div class="feature__sidebar">
 
-          <?php
-                    $args = array(
-                        'post_type' => 'blogPost',
-                        'posts_per_page' => 6,
-                        'offset'      => 3,
-                        'tax_query' => array(
-                          array(
-                            'taxonomy' => 'category',
-                            'field'    => 'slug',
-                            'terms'    => 'featured-post',
-                          ),
-                        ),
-                    );
-                    $newQuery = new WP_Query($args);
-                ?>
-
-            <?php if($newQuery->have_posts()) : while($newQuery->have_posts()) : $newQuery->the_post(); ?>
+            <?php if(get_field('features_repeater')) : while(the_repeater_field('features_repeater')) : ?>
 
             <div class="card__mini">
-              <small><?php echo get_the_date('M d Y'); ?></small>
+              <small>Oct 21, 2022</small>
               <h4>
-                <?php echo the_title(); ?>
+                <?php echo get_sub_field('features_title'); ?>
               </h4>
-              <a href="<?php echo get_permalink(); ?>">Read More ...</a>
+              <a href="#">Read More ...</a>
             </div>
 
             <?php
@@ -297,8 +231,9 @@
                     else:
                         echo 'no available content';
                     endif;
-                    wp_reset_postdata();
+                        wp_reset_postdata();
                 ?>
+            
           </div>
         </div>
       </div>

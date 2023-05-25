@@ -15,7 +15,7 @@ function theBlog_custom_post(){
         'public'            => true,
         'capability_type'   => 'post',
         'show_ui'           => true,
-        'taxonomies'        => array('category'),
+        'taxonomies'        => array('post_tag','category'),
         'supports'          => array('title', 'editor', 'thumbnail', 'excerpt'),
     );
 
@@ -55,7 +55,7 @@ function theBlog_custom_post(){
     //     'public'            => true,
     //     'capability_type'   => 'post',
     //     'show_ui'           => true,
-    //     'taxonomies'        => array('category'),
+    //     'taxonomies'        => array('post_tag','category'),
     //     'supports'          => array('title', 'editor', 'thumbnail', 'excerpt'),
     // );
 
